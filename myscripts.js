@@ -194,8 +194,13 @@ function game() {
         let outcome = playRound(getPlayerSelection(),getComputerChoice());
 
         if(outcome.includes(`Tie!`) === true){
-            playerScore = playerScore + 0.2;
-            computerScore = computerScore + 0.2;
+            playerScore = ((playerScore*10 + 0.2*10)/10);
+            computerScore = ((computerScore*10 + 0.2*10)/10);
+
+//let helpingAccuracy = (0.2*10 + 0.1*10)/10;
+// 
+
+
             console.log("Player score is "
             +playerScore+" Computer score is "+computerScore);
             continue;
