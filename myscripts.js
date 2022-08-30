@@ -60,23 +60,28 @@ return SCISSORS
 else tell player try again
 */
 
+const Rock = document.querySelector('#Rock');
+const Paper = document.querySelector('#Paper');
+const Scissors = document.querySelector('#Scissors');
+
+Rock.addEventListener('click',() => {
+    console.log('r');
+    return("ROCK");
+});
+
+Paper.addEventListener('click',() => {
+    console.log('p');
+    return("PAPER");
+});
+
+Scissors.addEventListener('click',() => {
+    console.log('s');
+    return("SCISSORS");
+});
+
+
 function getPlayerSelection(){
-    const Rock = document.querySelector('#Rock');
-    const Paper = document.querySelector('#Paper');
-    const Scissors = document.querySelector('#Scissors');
 
-
-    Rock.addEventListener('click',() => {
-        return("ROCK");
-    });
-
-    Paper.addEventListener('click',() => {
-        return("PAPER");
-    });
-    
-    Scissors.addEventListener('click',() => {
-        return("SCISSORS");
-    });
 
 
 }
