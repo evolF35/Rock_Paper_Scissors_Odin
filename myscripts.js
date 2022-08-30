@@ -61,21 +61,24 @@ else tell player try again
 */
 
 function getPlayerSelection(){
-    let selection = prompt("please input either Rock,Paper,or Scissors");
-    upperCaseSelection = selection.toUpperCase();
+    const Rock = document.querySelector('#Rock');
+    const Paper = document.querySelector('#Paper');
+    const Scissors = document.querySelector('#Scissors');
 
-    if (upperCaseSelection === "ROCK"){
-        return(`ROCK`);
-    }
-    else if (upperCaseSelection === "PAPER"){
-        return(`PAPER`);
-    }
-    else if (upperCaseSelection === "SCISSORS"){
-        return(`SCISSORS`);
-    }
-    else {
-        return(getPlayerSelection());
-    }
+
+    Rock.addEventListener('click',() => {
+        return("ROCK");
+    });
+
+    Paper.addEventListener('click',() => {
+        return("PAPER");
+    });
+    
+    Scissors.addEventListener('click',() => {
+        return("SCISSORS");
+    });
+
+
 }
 
 
@@ -244,3 +247,16 @@ function game() {
 
 
 
+
+
+
+
+/*
+user clicks rock, paper, or scissors
+this calls play the round
+
+
+
+
+
+ */
