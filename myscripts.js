@@ -1,4 +1,3 @@
-console.log("Here is my Javascript!");
 
 /*
 Function : getComputerChoice
@@ -65,31 +64,21 @@ const Paper = document.querySelector('#Paper');
 const Scissors = document.querySelector('#Scissors');
 
 Rock.addEventListener('click',() => {
-    console.log('r');
-    return("ROCK");
+    playRound("ROCK",getComputerChoice());
 });
 
 Paper.addEventListener('click',() => {
-    console.log('p');
-    return("PAPER");
+    playRound("PAPER",getComputerChoice());
 });
 
 Scissors.addEventListener('click',() => {
-    console.log('s');
-    return("SCISSORS");
+    playRound("SCISSORS",getComputerChoice());
 });
 
 
-function getPlayerSelection(){
-
-
-
-}
-
-
-
-
-
+let playerScore = 0;
+let computerScore = 0;
+let iterations = 0;
 /* 
 Function: playSingleRound
 specs: takes two parameters, playerSelection and
@@ -135,133 +124,65 @@ i reversed
 
 
 function playRound(player,computer){
+
+    document.getElementById('RESULT').innerText = "";
+    document.getElementById('update').innerText = ``;
+    document.getElementById('ROUND').innerText = `Round ${iterations+1}`;
+
+
     if(player === computer){
-        console.log(`A Tie!`);
-        return(`A Tie!`);
+        playerScore = ((playerScore*10 + 0.2*10)/10);
+        computerScore = ((computerScore*10 + 0.2*10)/10);
+        document.getElementById('update').innerText = `A Tie!`;
     }
     else if(player < computer){
         if(player === `PAPER` && computer === `ROCK` || player === `ROCK`){
-            console.log(`You Win! ${player} beats ${computer}`);
-            return(`You Win! ${player} beats ${computer}`);
+            document.getElementById('update').innerText = 
+            `You Win! ${player} beats ${computer}`;
+            ++playerScore;
         }
         else{
-            console.log(`You Lose! ${player} is beaten by ${computer}`)
-            return(`You Lose! ${player} is beaten by ${computer}`);
+            document.getElementById('update').innerText = 
+            `You Lose! ${player} is beaten by ${computer}`;
+            ++computerScore;
+
         }
     }
     else{
         if(player === `SCISSORS` && computer === `PAPER`){
-            console.log(`You Win! ${player} beats ${computer}`);
-            return(`You Win! ${player} beats ${computer}`);
-        }
-        else{
-            console.log(`You Lose! ${player} is beaten by ${computer}`)
-            return(`You Lose! ${player} is beaten by ${computer}`);
-        }
-    }
-}
-
-
-/* 
-Function: Game
-spec: call playround function to play a 5 round game
-keeps score, and reports winner or loser at end
-
-create computer and player score
-and set it to 0
-
-for 5 rounds
-    call playround
-    if player wins
-    player score + 1
-    print both scores
-    if computer wins 
-    computer score + 1
-    print both scores
-    else
-    player and computer score + 0.2
-    print both scores
-
-if playerscore greater than computer score
-    print player is champion
-if computerscore greater than player score
-    print computer is champion
-if playerscore === computerscore
-    print noone is champion!
-
-*/
-
-
-
-function game() {
-
-    let playerScore = 0;
-    let computerScore = 0;
-
-    for(i = 0; i < 5; i++){
-        let outcome = playRound(getPlayerSelection(),getComputerChoice());
-
-        if(outcome.includes(`Tie!`) === true){
-            playerScore = ((playerScore*10 + 0.2*10)/10);
-            computerScore = ((computerScore*10 + 0.2*10)/10);
-
-//let helpingAccuracy = (0.2*10 + 0.1*10)/10;
-// 
-
-
-            console.log("Player score is "
-            +playerScore+" Computer score is "+computerScore);
-            continue;
-        }
-        else if(outcome.includes(`Win!`) === true){
+            document.getElementById('update').innerText = 
+            `You Win! ${player} beats ${computer}`;
             ++playerScore;
-            console.log("Player score is "
-            +playerScore+" Computer score is "+computerScore);
-            continue;
         }
         else{
+            document.getElementById('update').innerText = 
+            `You Lose! ${player} is beaten by ${computer}`;
             ++computerScore;
-            console.log("Player score is "
-            +playerScore+" Computer score is "+computerScore);
-            continue;
+
         }
     }
 
-    if(playerScore > computerScore){
-        console.log("Player is the Champion!");
-    }
-    else if(playerScore < computerScore){
-        console.log("Computer is the Champion!");
-    }
-    else {
-        console.log("Nobody is the Champion!");
-    }
+    document.getElementById('Pscore').innerText = playerScore;
+    document.getElementById('Cscore').innerText = computerScore;
+    iterations++;
 
+    if (iterations === 5){
+        if(playerScore > computerScore){
+            document.getElementById('RESULT').innerText 
+            = "Player is the Champion!";
+        }
+        else if(playerScore < computerScore){
+            document.getElementById('RESULT').innerText 
+            = "Computer is the Champion!";
+        }
+        else {
+            document.getElementById('RESULT').innerText 
+            = "Nobody is the Champion!";
+        }
+        iterations = 0;
+        playerScore = 0;
+        computerScore = 0;
+    }
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-user clicks rock, paper, or scissors
-this calls play the round
-
-
-
-
-
- */

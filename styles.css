@@ -1,5 +1,10 @@
 body{
     text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 h1{
@@ -20,11 +25,32 @@ p{
 .scoreboard{
     display: flex;
     justify-content: center;
-    gap: 16px;
+    gap: 50px;
 }
 
 #Pscore ,
 #Cscore{
-    font-size: xx-large;
+    font-size: 70px;
+    margin: -15px;
 }
+
+#RESULT {
+    font-size: 45px;
+}
+
+button{
+    font-size: 40px;
+    border-radius: 12px;
+}
+
+#update{
+    padding-top: 20px;
+    padding-bottom: 25px;
+    font-size: 25px;
+}
+
+#ROUND{
+    font-size: 30px;
+}
+
 
